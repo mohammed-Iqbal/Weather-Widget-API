@@ -22,18 +22,6 @@ let CelsiusSymbol = '℃';
 let FahrenheitUnit = 'imperial';
 let FahrenheitSymbol = '°F';
 
-window.addEventListener('load', () => {
-// Accesing Geolocation of Users.
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position) => {
-            long = position.coords.longitude;
-            lat = position.coords.latitude;
-            currentWeatherForecast(lat, long, CelsiusUnit, CelsiusSymbol);
-            fiveDayForecast(lat, long, CelsiusUnit, CelsiusSymbol);
-        });
-    }
-});
-
 async function toggle(button) {
     switch (button.value) {
         case "Switch to Fahrenheit":
@@ -60,7 +48,8 @@ async function currentWeatherForecast(lat, long, units, symbol) {
                 let {temp} = data.main;
                 let {description, icon} = data.weather[0];
                 let iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`; // create icon url
-// create html for current temprature
+
+                // create html for current temprature
                 let html = '<h2>Current Conditions</h2>' +
                         '<img src="' + iconUrl + '" />' +
                         '<div class="current">' +
@@ -72,6 +61,18 @@ async function currentWeatherForecast(lat, long, units, symbol) {
 
             });
 }
+
+window.addEventListener('load', () => {
+    // Accesing Geolocation of Users.
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                long = position.coords.longitude;
+                lat = position.coords.latitude;
+                currentWeatherForecast(lat, long, CelsiusUnit, CelsiusSymbol);
+                fiveDayForecast(lat, long, CelsiusUnit, CelsiusSymbol);
+            });
+        }
+    });
 
 async function fiveDayForecast(lat, long, units, symbol) {
 // api end point for forecast using same lat and lng        
