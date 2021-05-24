@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Current Weather</title>
+  </head>
+  <body>
+    <main>
+        <input type="button" id="1" value="Switch to Fahrenheit" style="color:red"  onclick="javascript:toggle(this);">
+        <div class="current-conditions" id="current-conditions">
+            <h2>Current Conditions</h2>
+            <p>Please enable location</p>
+        </div>
+      <h2 class="forecastHeading">5 Day Forecast</h2>
+      <div id="fivedayforecast">
+          <p>Waiting for your Current forecast.............</p>
+      </div>
+    </main>
+    <script src="scripts.js"></script>
+  </body>
+</html>
